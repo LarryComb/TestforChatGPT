@@ -66,7 +66,7 @@ struct ContentView: View {
             }
             
         }
-        
+        //The view is not in scope because "setup" in not being referenced
         .onAppear{
             viewModel.setup()
         }
