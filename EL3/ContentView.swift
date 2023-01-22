@@ -68,6 +68,7 @@ struct ContentView: View {
         }
         //The view is not in scope because "setup" in not being referenced
         // Adding another note to be deleted this is to see if commit push works
+        // Third Try at git commit 
         .onAppear{
             viewModel.setup()
         }
