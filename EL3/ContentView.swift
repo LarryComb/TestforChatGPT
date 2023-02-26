@@ -1,3 +1,10 @@
+//
+//  EL3App.swift
+//  EL3
+//
+//  Created by LARRY COMBS on 1/9/23.
+//
+
 import SwiftUI
 import OpenAISwift
 
@@ -31,7 +38,7 @@ struct ContentView: View {
         }
         
         messages.append(Message(text: inputMessage, isUser: true))
-        let client = OpenAISwift(authToken: "")
+        let client = OpenAISwift(authToken: "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")
         client.sendCompletion(with: inputMessage, maxTokens: 500) { result in
             switch result {
             case .success(let model):
