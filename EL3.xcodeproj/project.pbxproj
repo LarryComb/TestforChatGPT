@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		46A7FF6E29B84A0E00F760BF /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46A7FF6D29B84A0E00F760BF /* LoginView.swift */; };
 		46ED6887296D338600777A55 /* EL3App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46ED6886296D338600777A55 /* EL3App.swift */; };
 		46ED6889296D338600777A55 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46ED6888296D338600777A55 /* ContentView.swift */; };
 		46ED688B296D338900777A55 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 46ED688A296D338900777A55 /* Assets.xcassets */; };
@@ -15,6 +16,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		46A7FF6D29B84A0E00F760BF /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		46ED6883296D338600777A55 /* EL3.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EL3.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		46ED6886296D338600777A55 /* EL3App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EL3App.swift; sourceTree = "<group>"; };
 		46ED6888296D338600777A55 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -55,6 +57,7 @@
 			children = (
 				46ED6886296D338600777A55 /* EL3App.swift */,
 				46ED6888296D338600777A55 /* ContentView.swift */,
+				46A7FF6D29B84A0E00F760BF /* LoginView.swift */,
 				46ED688A296D338900777A55 /* Assets.xcassets */,
 				46ED688C296D338900777A55 /* Preview Content */,
 			);
@@ -145,6 +148,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				46A7FF6E29B84A0E00F760BF /* LoginView.swift in Sources */,
 				46ED6889296D338600777A55 /* ContentView.swift in Sources */,
 				46ED6887296D338600777A55 /* EL3App.swift in Sources */,
 			);
