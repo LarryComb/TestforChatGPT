@@ -9,9 +9,20 @@ import SwiftUI
 
 @main
 struct EL3App: App {
+    @State private var firebaseToken = ""
+    
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            if firebaseToken.isEmpty {
+                LoginView(loginCallback: captureToken(token:))
+            } else {
+                ContentView()
+            }
         }
+    }
+    
+    func captureToken(token: String)
+    {
+        firebaseToken = token
     }
 }
