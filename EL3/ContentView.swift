@@ -38,7 +38,7 @@ struct ContentView: View {
         }
         
         messages.append(Message(text: inputMessage, isUser: true))
-        let client = OpenAISwift(authToken: "")
+        let client = OpenAISwift(authToken: "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")
         client.sendCompletion(with: inputMessage, maxTokens: 500) { result in
             switch result {
             case .success(let model):
