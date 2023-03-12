@@ -1,0 +1,6 @@
+framework module Pods_EL3 {
+  umbrella header "Pods-EL3-umbrella.h"
+
+  export *
+  module * { export * }
+}
