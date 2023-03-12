@@ -18,7 +18,7 @@ class AppDelegate: NSObject, UIApplicationDelegate {
     return true
   }
 }
-
+/*
 @main
 struct YourApp: App {
   // register app delegate for Firebase setup
@@ -32,4 +32,4 @@ struct YourApp: App {
       }
     }
   }
-}
+}*/
