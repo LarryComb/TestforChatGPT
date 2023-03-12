@@ -130,6 +130,7 @@
 			mainGroup = 46ED687A296D338600777A55;
 			packageReferences = (
 				46ED6894296D33B900777A55 /* XCRemoteSwiftPackageReference "OpenAISwift" */,
+				46A7FFAF29BD6FC600F760BF /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 			);
 			productRefGroup = 46ED6884296D338600777A55 /* Products */;
 			projectDirPath = "";
@@ -365,6 +366,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		46A7FFAF29BD6FC600F760BF /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 9.0.0;
+			};
+		};
 		46ED6894296D33B900777A55 /* XCRemoteSwiftPackageReference "OpenAISwift" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/adamrushy/OpenAISwift";
