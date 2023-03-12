@@ -5,8 +5,9 @@
 //  Created by LARRY COMBS on 3/11/23.
 //
 //This is the code from ChatGPT 
+/*
 import SwiftUI
-import Firebase
+import FirebaseCore
 
 struct ContentView: View {
     @State var email: String = ""
@@ -34,3 +35,4 @@ struct ContentView: View {
         }
     }
 }
+*/
