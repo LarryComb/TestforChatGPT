@@ -7,9 +7,11 @@
 
 //import Foundation
 import SwiftUI
+import Firebase
+import FirebaseAuth
 
 struct LoginView: View {
-    @State private var username = ""
+    @State private var email = ""
     @State private var password = ""
     @State private var wrongUsername = 0
     @State private var wrongPassword = 0
@@ -34,7 +36,7 @@ struct LoginView: View {
                         .bold()
                         .padding()
                         .foregroundColor(.orange)
-                    TextField("Username", text: $username)
+                    TextField("email", text: $email)
                         .padding()
                         .frame(width: 300, height: 50)
                         .background(Color.black.opacity(0.25))
@@ -49,7 +51,7 @@ struct LoginView: View {
                         .border(.red, width: CGFloat(wrongPassword))
                     
                     Button("Login"){
-                        authenticateUser(username: username, password: password)
+                        //authenticateUser(email: email, password: password)
                     }
                     .foregroundColor(.orange)
                     .frame(width: 300, height: 50)
@@ -61,21 +63,108 @@ struct LoginView: View {
             .navigationBarHidden(false)
         }
     }
-
-    func authenticateUser(username: String, password: String) {
-        if username.lowercased() == "larry" {
-            wrongUsername = 0
-            if password.lowercased() == "1234" {
-                wrongPassword = 0
-                loginCallback("derpderpderpderp");
-            } else {
-                wrongPassword = 2
+    
+    /*
+     func authenticateUser(username: String, password: String) {
+     if username.lowercased() == "larry" {
+     wrongUsername = 0
+     if password.lowercased() == "1234" {
+     wrongPassword = 0
+     loginCallback("derpderpderpderp");
+     } else {
+     wrongPassword = 2
+     }
+     } else {
+     wrongUsername = 2
+     }
+     }
+     // This code does work
+     
+     Auth.auth().signIn(withEmail: email, password: password) { result, error in
+         guard error == nil else {
+             //show account creation
+             showCreateAccount(email: email, password: password)
+             return
+         }
+         
+         
+     }
+     
+     FirebaseAuth()Auth.auth().signIn(withEmail: email, password: password, completion: {[weak self] results, error in
+         guard let strongSelf = self else {
+             
+             return
+         }
+         guard error == nil else {
+             //show account creation
+             strongSelf.showCreateAccount(email: email, password: password)
+             return
+         }
+         print("You are signed in")
+         //strongSelf.lable.isHidden = true
+         strongSelf.username.isHidden = true
+         strongSelf.password.isHidden = true
+         //strongSelf.loginCallback.isHidden = true
+     })
+     */
+     
+    
+    
+    
+    struct LoginView: View {
+        @State private var email = ""
+        @State private var password = ""
+        
+        var body: some View {
+            VStack {
+                TextField("Email", text: $email)
+                SecureField("Password", text: $password)
+                Button("Sign In") {
+                    Auth.auth().signIn(withEmail: email, password: password) { result, error in
+                        // handle the result and error here
+                    }
+                }
             }
-        } else {
-            wrongUsername = 2
         }
     }
+     
+    
+ 
+    
+    
+    
+    func showCreateAccount(email: String, password: String){
+        let alert = UIAlertController(title: "Create Account",
+                                      message: "Would You Like To Create An Account",
+                                      preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Create Account",
+                                      style: .default,
+                                      handler: {_ in
+            Auth.auth().createUser(withEmail: email, password: password, completion: { result, error in
+                
+                
+            })
+            
+            
+            
+        }))
+        alert.addAction(UIAlertAction(title: "Cancel",
+                                      style: .cancel,
+                                      handler: {_ in
+            
+        }))
+        
+        
+      //  present(alert, animated: true)
+    }
+    
+
 }
+
+
+
+
+
 
 //struct LoginView_Previews: PreviewProvider {
 //    static var previews: some View {

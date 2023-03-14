@@ -17,6 +17,8 @@ class AppDelegate: NSObject, UIApplicationDelegate {
 
     return true
   }
+    
+    //Firebase.Auth.auth().signIn(with: <#T##FIRAuthCredential#>)
 }
 /*
 @main
