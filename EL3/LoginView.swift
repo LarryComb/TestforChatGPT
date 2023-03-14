@@ -33,24 +33,25 @@ struct LoginView: View {
                         .font(.largeTitle)
                         .bold()
                         .padding()
+                        .foregroundColor(.orange)
                     TextField("Username", text: $username)
                         .padding()
                         .frame(width: 300, height: 50)
-                        .background(Color.black.opacity(0.05))
+                        .background(Color.black.opacity(0.25))
                         .cornerRadius(10)
                         .border(.red, width: CGFloat(wrongUsername))
                     
                     SecureField("Password", text: $password)
                         .padding()
                         .frame(width: 300, height: 50)
-                        .background(Color.black.opacity(0.05))
+                        .background(Color.black.opacity(0.25))
                         .cornerRadius(10)
                         .border(.red, width: CGFloat(wrongPassword))
                     
                     Button("Login"){
                         authenticateUser(username: username, password: password)
                     }
-                    .foregroundColor(.white)
+                    .foregroundColor(.orange)
                     .frame(width: 300, height: 50)
                     .background(Color.blue)
                     .cornerRadius(10)
