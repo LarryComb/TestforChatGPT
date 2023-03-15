@@ -18,20 +18,25 @@ class AppDelegate: NSObject, UIApplicationDelegate {
     return true
   }
     
-    //Firebase.Auth.auth().signIn(with: <#T##FIRAuthCredential#>)
+   
 }
-/*
-@main
-struct YourApp: App {
-  // register app delegate for Firebase setup
-  @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
 
-
-  var body: some Scene {
-    WindowGroup {
-      NavigationView {
-        ContentView()
-      }
-    }
-  }
-}*/
+ @main
+ struct EL3App: App {
+     @State private var firebaseToken = ""
+     
+     var body: some Scene {
+         WindowGroup {
+             if firebaseToken.isEmpty {
+                 LoginView(loginCallback: captureToken(token:))
+             } else {
+                 ContentView()
+             }
+         }
+     }
+     
+     func captureToken(token: String)
+     {
+         firebaseToken = token
+     }
+ }
