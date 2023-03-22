@@ -23,6 +23,7 @@ class AppDelegate: NSObject, UIApplicationDelegate {
 
  @main
  struct EL3App: App {
+     @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
      @State private var firebaseToken = ""
      
      var body: some Scene {

@@ -13,8 +13,8 @@ import FirebaseAuth
 struct LoginView: View {
     @State private var email = ""
     @State private var password = ""
-    @State private var wrongUsername = 0
-    @State private var wrongPassword = 0
+    @State private var loginErrorMesage = ""
+    @State private var hasLoginError = false
     
     var loginCallback : (String) -> ()
     
@@ -41,27 +41,19 @@ struct LoginView: View {
                         .frame(width: 300, height: 50)
                         .background(Color.black.opacity(0.25))
                         .cornerRadius(10)
-                        .border(.red, width: CGFloat(wrongUsername))
                     
                     SecureField("Password", text: $password)
                         .padding()
                         .frame(width: 300, height: 50)
                         .background(Color.black.opacity(0.25))
                         .cornerRadius(10)
-                        .border(.red, width: CGFloat(wrongPassword))
                     
                     Button("Login"){
                         //authenticate User
                         Auth.auth().signIn(withEmail: email, password: password) {result, error in
                             // handle the result and error here
-                            guard error == nil else {
-                                //show account creation
-                                self.showCreateAccount(email: email, password: password)
-                                return
-                            }
-                            
-                            print("You have signed in")
-                           
+                            hasLoginError = error != nil;
+                            loginErrorMesage = error?.localizedDescription ?? ""
                         }
                         
                     }
@@ -69,7 +61,21 @@ struct LoginView: View {
                     .frame(width: 300, height: 50)
                     .background(Color.blue)
                     .cornerRadius(10)
+                    .alert(loginErrorMesage, isPresented: $hasLoginError) {
+                        Button("OK", role: .cancel) { }
+                    }
                     
+                    Button("Register"){
+                        Auth.auth().createUser(withEmail: email, password: password, completion: { result, error in
+                          // handle the result and error here
+                            hasLoginError = error != nil;
+                            loginErrorMesage = error?.localizedDescription ?? ""
+                        })
+                    }
+                    .foregroundColor(.orange)
+                    .frame(width: 300, height: 50)
+                    .background(Color.blue)
+                    .cornerRadius(10)
                 }
             }
             .navigationBarHidden(false)
@@ -80,35 +86,6 @@ struct LoginView: View {
     }
     
     
-    func showCreateAccount(email: String, password: String){
-        let alert = UIAlertController(title: "Create Account",
-                                      message: "Would You Like To Create An Account",
-                                      preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "Create Account",
-                                      style: .default,
-                                      handler: {_ in
-            Auth.auth().createUser(withEmail: email, password: password, completion: { result, error in
-                // handle the result and error here
-                guard error == nil else {
-                    //show account creation
-                    print("Account Creation Failed")
-                    return
-                }
-                
-            })
-            
-            alert.addAction(UIAlertAction(title: "Cancel",
-                                          style: .cancel,
-                                          handler: {_ in
-            
-            }))
-        
-                
-        }))
-        
-        
-        //  present(alert, animated: true)
-    }
    // present(alert(isPresented: true, content: .show))
 }
 
