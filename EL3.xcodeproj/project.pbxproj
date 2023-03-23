@@ -9,8 +9,6 @@
 /* Begin PBXBuildFile section */
 		3CA43B3E1AB68C26AAFAEB75 /* Pods_EL3.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 13C79C3047EEB36168C7E2DE /* Pods_EL3.framework */; };
 		46A7FF6E29B84A0E00F760BF /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46A7FF6D29B84A0E00F760BF /* LoginView.swift */; };
-		46A7FFAA29BD65FB00F760BF /* ReAuthenticateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46A7FFA929BD65FB00F760BF /* ReAuthenticateView.swift */; };
-		46A7FFAC29BD666F00F760BF /* ReAuthenticateViewGPT.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46A7FFAB29BD666F00F760BF /* ReAuthenticateViewGPT.swift */; };
 		46A7FFAE29BD6A8000F760BF /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 46A7FFAD29BD6A8000F760BF /* GoogleService-Info.plist */; };
 		46A7FFB129BE285400F760BF /* InitializationCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46A7FFB029BE285400F760BF /* InitializationCode.swift */; };
 		46ED6887296D338600777A55 /* EL3App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46ED6886296D338600777A55 /* EL3App.swift */; };
@@ -23,8 +21,6 @@
 /* Begin PBXFileReference section */
 		13C79C3047EEB36168C7E2DE /* Pods_EL3.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_EL3.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		46A7FF6D29B84A0E00F760BF /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
-		46A7FFA929BD65FB00F760BF /* ReAuthenticateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReAuthenticateView.swift; sourceTree = "<group>"; };
-		46A7FFAB29BD666F00F760BF /* ReAuthenticateViewGPT.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReAuthenticateViewGPT.swift; sourceTree = "<group>"; };
 		46A7FFAD29BD6A8000F760BF /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		46A7FFB029BE285400F760BF /* InitializationCode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitializationCode.swift; sourceTree = "<group>"; };
 		46ED6883296D338600777A55 /* EL3.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EL3.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -55,7 +51,6 @@
 				4E28B83D5A76BDAAF2441A9D /* Pods-EL3.debug.xcconfig */,
 				828BDF76D2FAEFB185654959 /* Pods-EL3.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -90,8 +85,6 @@
 			children = (
 				46ED6886296D338600777A55 /* EL3App.swift */,
 				46ED6888296D338600777A55 /* ContentView.swift */,
-				46A7FFA929BD65FB00F760BF /* ReAuthenticateView.swift */,
-				46A7FFAB29BD666F00F760BF /* ReAuthenticateViewGPT.swift */,
 				46A7FFB029BE285400F760BF /* InitializationCode.swift */,
 				46A7FF6D29B84A0E00F760BF /* LoginView.swift */,
 				46A7FFAD29BD6A8000F760BF /* GoogleService-Info.plist */,
@@ -231,8 +224,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				46A7FFAA29BD65FB00F760BF /* ReAuthenticateView.swift in Sources */,
-				46A7FFAC29BD666F00F760BF /* ReAuthenticateViewGPT.swift in Sources */,
 				46A7FFB129BE285400F760BF /* InitializationCode.swift in Sources */,
 				46A7FF6E29B84A0E00F760BF /* LoginView.swift in Sources */,
 				46ED6889296D338600777A55 /* ContentView.swift in Sources */,
