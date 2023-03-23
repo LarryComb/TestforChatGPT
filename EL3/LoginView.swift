@@ -15,11 +15,22 @@ struct LoginView: View {
     @State private var password = ""
     @State private var loginErrorMesage = ""
     @State private var hasLoginError = false
+    @State private var userIsLoggedIn = false
     
     var loginCallback : (String) -> ()
     
     var body: some View {
         NavigationStack {
+            //if user is logged in go to contentView
+            if userIsLoggedIn {
+                ContentView()
+            } else{
+                content
+            }
+        }
+    }
+        
+        var content: some View{
             ZStack {
                 Color.blue
                     .ignoresSafeArea()
@@ -61,8 +72,16 @@ struct LoginView: View {
                     .frame(width: 300, height: 50)
                     .background(Color.blue)
                     .cornerRadius(10)
+                    .onAppear{
+                        Auth.auth().addStateDidChangeListener{auth, user in
+                            if user != nil {
+                                userIsLoggedIn.toggle()
+                            }
+                        }
+                    }
                     .alert(loginErrorMesage, isPresented: $hasLoginError) {
                         Button("OK", role: .cancel) { }
+                            
                     }
                     
                     Button("Register"){
@@ -81,13 +100,11 @@ struct LoginView: View {
             .navigationBarHidden(false)
         }
         
-        
-        
     }
     
     
    // present(alert(isPresented: true, content: .show))
-}
+//}
 
 
 
