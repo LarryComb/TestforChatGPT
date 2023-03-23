@@ -20,7 +20,7 @@ struct LoginView: View {
     var loginCallback : (String) -> ()
     
     var body: some View {
-        NavigationStack {
+       NavigationStack {
             //if user is logged in go to contentView
             if userIsLoggedIn {
                 ContentView()
