@@ -26,13 +26,13 @@ struct LoginView: View {
             } else {
                 content
             }
-        }
+        }/*
         .onAppear {
             // Check if user is already logged in
             if let _ = Auth.auth().currentUser {
                 userIsLoggedIn = true
             }
-        }
+        }*/
     }
     
     var content: some View {
