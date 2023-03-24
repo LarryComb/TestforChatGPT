@@ -20,88 +20,91 @@ struct LoginView: View {
     var loginCallback : (String) -> ()
     
     var body: some View {
-       NavigationStack {
-            //if user is logged in go to contentView
+        NavigationView {
             if userIsLoggedIn {
                 ContentView()
-            } else{
+            } else {
                 content
             }
         }
-    }
-        
-        var content: some View{
-            ZStack {
-                Color.blue
-                    .ignoresSafeArea()
-                Circle()
-                    .scale(1.7)
-                    .foregroundColor(.white.opacity(0.15))
-                Circle()
-                    .scale(1.35)
-                    .foregroundColor(.white)
-                
-                VStack {
-                    Text("Login")
-                        .font(.largeTitle)
-                        .bold()
-                        .padding()
-                        .foregroundColor(.orange)
-                    TextField("email", text: $email)
-                        .padding()
-                        .frame(width: 300, height: 50)
-                        .background(Color.black.opacity(0.25))
-                        .cornerRadius(10)
-                    
-                    SecureField("Password", text: $password)
-                        .padding()
-                        .frame(width: 300, height: 50)
-                        .background(Color.black.opacity(0.25))
-                        .cornerRadius(10)
-                    
-                    Button("Login"){
-                        //authenticate User
-                        Auth.auth().signIn(withEmail: email, password: password) {result, error in
-                            // handle the result and error here
-                            hasLoginError = error != nil;
-                            loginErrorMesage = error?.localizedDescription ?? ""
-                        }
-                        
-                    }
-                    .foregroundColor(.orange)
-                    .frame(width: 300, height: 50)
-                    .background(Color.blue)
-                    .cornerRadius(10)
-                    .onAppear{
-                        Auth.auth().addStateDidChangeListener{auth, user in
-                            if user != nil {
-                                userIsLoggedIn.toggle()
-                            }
-                        }
-                    }
-                    .alert(loginErrorMesage, isPresented: $hasLoginError) {
-                        Button("OK", role: .cancel) { }
-                            
-                    }
-                    
-                    Button("Register"){
-                        Auth.auth().createUser(withEmail: email, password: password, completion: { result, error in
-                          // handle the result and error here
-                            hasLoginError = error != nil;
-                            loginErrorMesage = error?.localizedDescription ?? ""
-                        })
-                    }
-                    .foregroundColor(.orange)
-                    .frame(width: 300, height: 50)
-                    .background(Color.blue)
-                    .cornerRadius(10)
-                }
+        .onAppear {
+            // Check if user is already logged in
+            if let _ = Auth.auth().currentUser {
+                userIsLoggedIn = true
             }
-            .navigationBarHidden(false)
         }
-        
     }
     
+    var content: some View {
+        ZStack {
+            Color.blue
+                .ignoresSafeArea()
+            Circle()
+                .scale(1.7)
+                .foregroundColor(.white.opacity(0.15))
+            Circle()
+                .scale(1.35)
+                .foregroundColor(.white)
+            
+            VStack {
+                Text("Login")
+                    .font(.largeTitle)
+                    .bold()
+                    .padding()
+                    .foregroundColor(.orange)
+                TextField("email", text: $email)
+                    .padding()
+                    .frame(width: 300, height: 50)
+                    .background(Color.black.opacity(0.25))
+                    .cornerRadius(10)
+                
+                SecureField("Password", text: $password)
+                    .padding()
+                    .frame(width: 300, height: 50)
+                    .background(Color.black.opacity(0.25))
+                    .cornerRadius(10)
+                
+                Button("Login") {
+                    //authenticate User
+                    Auth.auth().signIn(withEmail: email, password: password) { result, error in
+                        // handle the result and error here
+                        hasLoginError = error != nil
+                        loginErrorMesage = error?.localizedDescription ?? ""
+                        if let _ = result?.user {
+                            // User has successfully logged in
+                            userIsLoggedIn = true
+                        }
+                    }
+                    
+                }
+                .foregroundColor(.orange)
+                .frame(width: 300, height: 50)
+                .background(Color.blue)
+                .cornerRadius(10)
+                
+                Button("Register") {
+                    Auth.auth().createUser(withEmail: email, password: password) { result, error in
+                        // handle the result and error here
+                        hasLoginError = error != nil
+                        loginErrorMesage = error?.localizedDescription ?? ""
+                        if let _ = result?.user {
+                            // User has successfully registered and logged in
+                            userIsLoggedIn = true
+                        }
+                    }
+                }
+                .foregroundColor(.orange)
+                .frame(width: 300, height: 50)
+                .background(Color.blue)
+                .cornerRadius(10)
+            }
+        }
+        .navigationBarHidden(false)
+        .alert(isPresented: $hasLoginError) {
+            Alert(title: Text("Error"), message: Text(loginErrorMesage), dismissButton: .default(Text("OK")))
+        }
+    }
+}
     
    // present(alert(isPresented: true, content: .show))
 //}
@@ -117,4 +120,3 @@ struct LoginView: View {
 //        LoginView()
 //    }
 //}
-
