@@ -24,7 +24,7 @@ struct LoginView: View {
             if userIsLoggedIn {
                 ContentView()
                     .navigationBarHidden(false)
-                    .navigationTitle("derpGPT")
+                    .navigationTitle("Sexy1")
                     .toolbar {
                         Button("Logout") {
                             do {
