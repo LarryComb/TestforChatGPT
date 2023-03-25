@@ -23,8 +23,27 @@ struct LoginView: View {
         NavigationView {
             if userIsLoggedIn {
                 ContentView()
+                    .navigationBarHidden(false)
+                    .navigationTitle("derpGPT")
+                    .toolbar {
+                        Button("Logout") {
+                            do {
+                                try Auth.auth().signOut()
+                                userIsLoggedIn = false
+                                email = ""
+                                password = ""
+                            }
+                            catch {
+                                // whatever for now
+                
+                            }
+                        }
+                    }
             } else {
                 content
+                    .navigationBarHidden(true)
+                    .navigationTitle("login")
+                    
             }
         }/*
         .onAppear {
@@ -33,6 +52,7 @@ struct LoginView: View {
                 userIsLoggedIn = true
             }
         }*/
+        
     }
     
     var content: some View {
@@ -99,7 +119,7 @@ struct LoginView: View {
                 .cornerRadius(10)
             }
         }
-        .navigationBarHidden(false)
+        .navigationBarHidden(true)        
         .alert(isPresented: $hasLoginError) {
             Alert(title: Text("Error"), message: Text(loginErrorMesage), dismissButton: .default(Text("OK")))
         }
