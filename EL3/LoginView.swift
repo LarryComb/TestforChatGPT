@@ -39,9 +39,9 @@ struct LoginView: View {
                             }
                         }
                         Button("Delete Account") {
-                            if let currentUser = Auth.auth().currentUser {
+                            
                                 do {
-                                    try currentUser.delete()
+                                    try Auth.auth().currentUser?.delete()
                                     userIsLoggedIn = false
                                     email = ""
                                     password = ""
@@ -50,11 +50,10 @@ struct LoginView: View {
                                 }
                             }
                         }
-                    }
-            } else {
-                content
-                    .navigationBarHidden(true)
-                    .navigationTitle("login")
+                    } else {
+                        content
+                            .navigationBarHidden(true)
+                            .navigationTitle("login")
                     
             }
         }/*
