@@ -38,6 +38,18 @@ struct LoginView: View {
                 
                             }
                         }
+                        Button("Delete Account") {
+                            if let currentUser = Auth.auth().currentUser {
+                                do {
+                                    try currentUser.delete()
+                                    userIsLoggedIn = false
+                                    email = ""
+                                    password = ""
+                                } catch {
+                                    // handle error
+                                }
+                            }
+                        }
                     }
             } else {
                 content
@@ -126,17 +138,57 @@ struct LoginView: View {
     }
 }
     
-   // present(alert(isPresented: true, content: .show))
-//}
+ 
+
+
+
+/*
+ func deleteUserAccount() {
+     let user = Auth.auth().currentUser
+
+     user?.delete { error in
+         if let err = error {
+             if let errorCode = AuthErrorCode(rawValue: error!._code) {
+                 switch errorCode {
+                     case .requiresRecentLogin:
+                         self.isReauthenticatedRequired = true
+                     default:
+                         print(err)
+                 }
+             }
+         } else {
+             self.isReauthenticatedRequired = false
+             self.isLoggedIn = false
+             self.session = nil
+         }
+     }
+ }
+ 
+ 
+ // this works but it has two warnings
+ 
+ Button("Delete Account") {
+     do {
+         try Auth.auth().currentUser?.delete()
+         userIsLoggedIn = false
+         email = ""
+         password = ""
+     }
+       catch {
+         // whatever for now
+
+     }
+ }
+}
+} else {
+    content
+        .navigationBarHidden(true)
+        .navigationTitle("login")
+    
+}
+
+ */
 
 
 
 
-
-
-
-//struct LoginView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        LoginView()
-//    }
-//}
