@@ -37,10 +37,13 @@ struct LoginView: View {
                             }
                             catch {
                                 // whatever for now
-                
+                                
                             }
                         }
-                        Button("Delete Account") {
+                        
+                        
+            
+                        Button("Delete Account", role: .destructive) {
                         
                                 do {
                                     try Auth.auth().currentUser?.delete()
@@ -50,7 +53,7 @@ struct LoginView: View {
                                 } catch {
                                     // handle error
                                 }
-                            }
+                           }
                         }
                     } else {
                         content
@@ -95,15 +98,17 @@ struct LoginView: View {
                     .background(Color.black.opacity(0.25))
                     .cornerRadius(10)
                     .textCase(.lowercase)
-                
+                    .autocapitalization(.none)
                 SecureField("Password", text: $password)
                     .padding()
                     .frame(width: 300, height: 50)
                     .background(Color.black.opacity(0.25))
                     .cornerRadius(10)
+                    .autocapitalization(.none)
                 
-                Button("Login") {
-                    //authenticate User
+                
+                Button(action: {
+                    // authenticate User
                     Auth.auth().signIn(withEmail: email, password: password) { result, error in
                         // handle the result and error here
                         hasLoginError = error != nil
@@ -113,14 +118,16 @@ struct LoginView: View {
                             userIsLoggedIn = true
                         }
                     }
-                    
+                }) {
+                    Text("Login")
+                        .foregroundColor(.green)
+                        .frame(width: 300, height: 50)
+                        .background(Color.blue)
+                        .cornerRadius(10)
                 }
-                .foregroundColor(.green)
-                .frame(width: 300, height: 50)
-                .background(Color.blue)
-                .cornerRadius(10)
                 
-                Button("Register") {
+                Button(action: {
+                    // register User
                     Auth.auth().createUser(withEmail: email, password: password) { result, error in
                         // handle the result and error here
                         hasLoginError = error != nil
@@ -130,11 +137,13 @@ struct LoginView: View {
                             userIsLoggedIn = true
                         }
                     }
+                }) {
+                    Text("Register")
+                        .foregroundColor(.green)
+                        .frame(width: 300, height: 50)
+                        .background(Color.blue)
+                        .cornerRadius(10)
                 }
-                .foregroundColor(.green)
-                .frame(width: 300, height: 50)
-                .background(Color.blue)
-                .cornerRadius(10)
             }
         }
         .navigationBarHidden(true)        
@@ -192,7 +201,62 @@ struct LoginView: View {
         .navigationTitle("login")
     
 }
+ 
+ //Working Delete button
+ 
+ Button("Delete Account", role: .destructive) {
+     if let user = Auth.auth().currentUser {
+         user.delete { error in
+             if let error = error {
+                 // handle error
+             } else {
+                 userIsLoggedIn = false
+                 email = ""
+                 password = ""
+             }
+         }
+     }
+ }
 
+ 
+ Button("Delete Account", role: .destructive) {
+ 
+         do {
+             try Auth.auth().currentUser?.delete()
+             userIsLoggedIn = false
+             email = ""
+             password = ""
+         } catch {
+             // handle error
+         }
+    }
+ }
+} else {
+ content
+     .navigationBarHidden(true)
+     .navigationTitle("ChatMate")
+     .foregroundColor(.blue)
+     .textCase(.lowercase)
+     .padding()
+ 
+
+}
+ 
+ Button("Delete Account", role: .destructive) {
+     if let user = Auth.auth().currentUser {
+         user.delete { error in
+             if let error = error {
+                 // handle error
+             } else {
+                 userIsLoggedIn = false
+                 email = ""
+                 password = ""
+             }
+         }
+     }
+ }
+
+ 
  */
 
 
