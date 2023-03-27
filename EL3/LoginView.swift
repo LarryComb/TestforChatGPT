@@ -24,7 +24,9 @@ struct LoginView: View {
             if userIsLoggedIn {
                 ContentView()
                     .navigationBarHidden(false)
-                    .navigationTitle("Sexy1")
+                    .navigationTitle("ChatMate")
+                    .foregroundColor(.green)
+                    .padding()
                     .toolbar {
                         Button("Logout") {
                             do {
@@ -39,7 +41,7 @@ struct LoginView: View {
                             }
                         }
                         Button("Delete Account") {
-                            
+                        
                                 do {
                                     try Auth.auth().currentUser?.delete()
                                     userIsLoggedIn = false
@@ -53,7 +55,11 @@ struct LoginView: View {
                     } else {
                         content
                             .navigationBarHidden(true)
-                            .navigationTitle("login")
+                            .navigationTitle("ChatMate")
+                            .foregroundColor(.blue)
+                            .textCase(.lowercase)
+                            .padding()
+                        
                     
             }
         }/*
@@ -78,16 +84,17 @@ struct LoginView: View {
                 .foregroundColor(.white)
             
             VStack {
-                Text("Login")
+                Text("ChatMate")
                     .font(.largeTitle)
                     .bold()
                     .padding()
-                    .foregroundColor(.orange)
+                    .foregroundColor(.green)
                 TextField("email", text: $email)
                     .padding()
                     .frame(width: 300, height: 50)
                     .background(Color.black.opacity(0.25))
                     .cornerRadius(10)
+                    .textCase(.lowercase)
                 
                 SecureField("Password", text: $password)
                     .padding()
@@ -108,7 +115,7 @@ struct LoginView: View {
                     }
                     
                 }
-                .foregroundColor(.orange)
+                .foregroundColor(.green)
                 .frame(width: 300, height: 50)
                 .background(Color.blue)
                 .cornerRadius(10)
@@ -124,7 +131,7 @@ struct LoginView: View {
                         }
                     }
                 }
-                .foregroundColor(.orange)
+                .foregroundColor(.green)
                 .frame(width: 300, height: 50)
                 .background(Color.blue)
                 .cornerRadius(10)
