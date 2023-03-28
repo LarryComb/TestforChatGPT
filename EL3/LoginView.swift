@@ -55,23 +55,14 @@ struct LoginView: View {
                                 }
                            }
                         }
-                    } else {
-                        content
-                            .navigationBarHidden(true)
-                            .navigationTitle("ChatMate")
-                            .foregroundColor(.blue)
-                            .textCase(.lowercase)
-                            .padding()
-                        
-                    
+            } else {
+                content
+                    .navigationBarHidden(true)
+                    .navigationTitle("ChatMate")
+                    .foregroundColor(.blue)
+                
             }
-        }/*
-        .onAppear {
-            // Check if user is already logged in
-            if let _ = Auth.auth().currentUser {
-                userIsLoggedIn = true
-            }
-        }*/
+        }
         
     }
     
