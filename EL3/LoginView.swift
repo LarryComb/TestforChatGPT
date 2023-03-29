@@ -44,18 +44,26 @@ struct LoginView: View {
                         
             
                         Button("Delete Account", role: .destructive) {
-                            if let user = Auth.auth().currentUser {
-                                user.delete { error in
-                                    if let error = error {
-                                        // handle error
-                                    } else {
-                                        userIsLoggedIn = false
-                                        email = ""
-                                        password = ""
-                                    }
+                        
+                                do {
+                                    try Auth.auth().currentUser?.delete()
+                                    userIsLoggedIn = false
+                                    email = ""
+                                    password = ""
+                                } catch {
+                                    // handle error
                                 }
-                            }
+                           }
                         }
+                    } else {
+                        content
+                            .navigationBarHidden(true)
+                            .navigationTitle("ChatMate")
+                            .foregroundColor(.blue)
+                    
+                }
+            }
+        }
     
     var content: some View {
         ZStack {
@@ -69,7 +77,7 @@ struct LoginView: View {
                 .foregroundColor(.white)
             
             VStack {
-                Text("Login")
+                Text("ChatMate")
                     .font(.largeTitle)
                     .bold()
                     .padding()
