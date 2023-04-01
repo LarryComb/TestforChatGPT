@@ -20,6 +20,7 @@
 
 /* Begin PBXFileReference section */
 		13C79C3047EEB36168C7E2DE /* Pods_EL3.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_EL3.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		4602D67429D8AD050039EB44 /* ChatMate3-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "ChatMate3-Info.plist"; sourceTree = "<group>"; };
 		46A7FF6D29B84A0E00F760BF /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		46A7FFAD29BD6A8000F760BF /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		46A7FFB029BE285400F760BF /* InitializationCode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitializationCode.swift; sourceTree = "<group>"; };
@@ -65,6 +66,7 @@
 		46ED687A296D338600777A55 = {
 			isa = PBXGroup;
 			children = (
+				4602D67429D8AD050039EB44 /* ChatMate3-Info.plist */,
 				46ED6885296D338600777A55 /* EL3 */,
 				46ED6884296D338600777A55 /* Products */,
 				0F5D38411970E6EB97563632 /* Pods */,
@@ -360,6 +362,7 @@
 				DEVELOPMENT_TEAM = GYWURP5G4S;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "ChatMate3-Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = ChatMate;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -371,7 +374,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = beyondconfident.com.ChatMate3;
+				PRODUCT_BUNDLE_IDENTIFIER = beyondconfident.com.ChatMate6;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -391,6 +394,7 @@
 				DEVELOPMENT_TEAM = GYWURP5G4S;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "ChatMate3-Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = ChatMate;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
