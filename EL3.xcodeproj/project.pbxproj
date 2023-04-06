@@ -20,11 +20,11 @@
 
 /* Begin PBXFileReference section */
 		13C79C3047EEB36168C7E2DE /* Pods_EL3.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_EL3.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		4602D67429D8AD050039EB44 /* ChatMate3-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "ChatMate3-Info.plist"; sourceTree = "<group>"; };
+		4602D67429D8AD050039EB44 /* EL3-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "EL3-Info.plist"; sourceTree = "<group>"; };
 		46A7FF6D29B84A0E00F760BF /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		46A7FFAD29BD6A8000F760BF /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		46A7FFB029BE285400F760BF /* InitializationCode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitializationCode.swift; sourceTree = "<group>"; };
-		46ED6883296D338600777A55 /* ChatMate3.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ChatMate3.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		46ED6883296D338600777A55 /* EL3.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EL3.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		46ED6886296D338600777A55 /* EL3App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EL3App.swift; sourceTree = "<group>"; };
 		46ED6888296D338600777A55 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		46ED688A296D338900777A55 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -66,7 +66,7 @@
 		46ED687A296D338600777A55 = {
 			isa = PBXGroup;
 			children = (
-				4602D67429D8AD050039EB44 /* ChatMate3-Info.plist */,
+				4602D67429D8AD050039EB44 /* EL3-Info.plist */,
 				46ED6885296D338600777A55 /* EL3 */,
 				46ED6884296D338600777A55 /* Products */,
 				0F5D38411970E6EB97563632 /* Pods */,
@@ -77,7 +77,7 @@
 		46ED6884296D338600777A55 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				46ED6883296D338600777A55 /* ChatMate3.app */,
+				46ED6883296D338600777A55 /* EL3.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -107,9 +107,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		46ED6882296D338600777A55 /* ChatMate3 */ = {
+		46ED6882296D338600777A55 /* EL3 */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 46ED6891296D338900777A55 /* Build configuration list for PBXNativeTarget "ChatMate3" */;
+			buildConfigurationList = 46ED6891296D338900777A55 /* Build configuration list for PBXNativeTarget "EL3" */;
 			buildPhases = (
 				69C31D864249D043C4CE4F7B /* [CP] Check Pods Manifest.lock */,
 				46ED687F296D338600777A55 /* Sources */,
@@ -121,12 +121,12 @@
 			);
 			dependencies = (
 			);
-			name = ChatMate3;
+			name = EL3;
 			packageProductDependencies = (
 				46ED6895296D33B900777A55 /* OpenAISwift */,
 			);
 			productName = EL3;
-			productReference = 46ED6883296D338600777A55 /* ChatMate3.app */;
+			productReference = 46ED6883296D338600777A55 /* EL3.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -144,7 +144,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 46ED687E296D338600777A55 /* Build configuration list for PBXProject "ChatMate3" */;
+			buildConfigurationList = 46ED687E296D338600777A55 /* Build configuration list for PBXProject "EL3" */;
 			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -161,7 +161,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				46ED6882296D338600777A55 /* ChatMate3 */,
+				46ED6882296D338600777A55 /* EL3 */,
 			);
 		};
 /* End PBXProject section */
@@ -182,7 +182,7 @@
 /* Begin PBXShellScriptBuildPhase section */
 		69C31D864249D043C4CE4F7B /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
+			buildActionMask = 8;
 			files = (
 			);
 			inputFileListPaths = (
@@ -197,7 +197,7 @@
 			outputPaths = (
 				"$(DERIVED_FILE_DIR)/Pods-EL3-checkManifestLockResult.txt",
 			);
-			runOnlyForDeploymentPostprocessing = 0;
+			runOnlyForDeploymentPostprocessing = 1;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
@@ -362,8 +362,8 @@
 				DEVELOPMENT_TEAM = GYWURP5G4S;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "ChatMate3-Info.plist";
-				INFOPLIST_KEY_CFBundleDisplayName = ChatMate;
+				INFOPLIST_FILE = "EL3-Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = EL3;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -394,8 +394,8 @@
 				DEVELOPMENT_TEAM = GYWURP5G4S;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "ChatMate3-Info.plist";
-				INFOPLIST_KEY_CFBundleDisplayName = ChatMate;
+				INFOPLIST_FILE = "EL3-Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = EL3;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -417,7 +417,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		46ED687E296D338600777A55 /* Build configuration list for PBXProject "ChatMate3" */ = {
+		46ED687E296D338600777A55 /* Build configuration list for PBXProject "EL3" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				46ED688F296D338900777A55 /* Debug */,
@@ -426,7 +426,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		46ED6891296D338900777A55 /* Build configuration list for PBXNativeTarget "ChatMate3" */ = {
+		46ED6891296D338900777A55 /* Build configuration list for PBXNativeTarget "EL3" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				46ED6892296D338900777A55 /* Debug */,
