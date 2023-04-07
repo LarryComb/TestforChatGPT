@@ -40,11 +40,11 @@ struct ContentView: View {
         }
         
         messages.append(Message(text: inputMessage, isUser: true))
-        let client = OpenAISwift(authToken: "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")
+        let client = OpenAISwift(authToken: "")
         client.sendCompletion(with: inputMessage, maxTokens: 500) { result in
             switch result {
             case .success(let model):
-                let response = model.choices.first?.text ?? ""
+                let response = model.choices?.first?.text ?? ""
                 self.messages.append(Message(text: response, isUser: false))
             case .failure(let error):
                 self.messages.append(Message(text: error.localizedDescription, isUser: false))
