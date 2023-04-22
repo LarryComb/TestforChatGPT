@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		3CA43B3E1AB68C26AAFAEB75 /* Pods_EL3.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 13C79C3047EEB36168C7E2DE /* Pods_EL3.framework */; };
+		0FEEFE0659083667FFFB7902 /* libPods-EL3.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 044598AB3C55BFCAED791AB3 /* libPods-EL3.a */; };
 		46A7FF6E29B84A0E00F760BF /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46A7FF6D29B84A0E00F760BF /* LoginView.swift */; };
 		46A7FFAE29BD6A8000F760BF /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 46A7FFAD29BD6A8000F760BF /* GoogleService-Info.plist */; };
 		46A7FFB129BE285400F760BF /* InitializationCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46A7FFB029BE285400F760BF /* InitializationCode.swift */; };
@@ -19,7 +19,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		13C79C3047EEB36168C7E2DE /* Pods_EL3.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_EL3.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		044598AB3C55BFCAED791AB3 /* libPods-EL3.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-EL3.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4602D67429D8AD050039EB44 /* EL3-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "EL3-Info.plist"; sourceTree = "<group>"; };
 		46A7FF6D29B84A0E00F760BF /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		46A7FFAD29BD6A8000F760BF /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -39,7 +39,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				46ED6896296D33B900777A55 /* OpenAISwift in Frameworks */,
-				3CA43B3E1AB68C26AAFAEB75 /* Pods_EL3.framework in Frameworks */,
+				0FEEFE0659083667FFFB7902 /* libPods-EL3.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -58,7 +58,7 @@
 		145B3CD184FB1EC4F30200D9 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				13C79C3047EEB36168C7E2DE /* Pods_EL3.framework */,
+				044598AB3C55BFCAED791AB3 /* libPods-EL3.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -115,7 +115,6 @@
 				46ED687F296D338600777A55 /* Sources */,
 				46ED6880296D338600777A55 /* Frameworks */,
 				46ED6881296D338600777A55 /* Resources */,
-				FAC7C17AAE71C756A09CA62D /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -200,23 +199,6 @@
 			runOnlyForDeploymentPostprocessing = 1;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		FAC7C17AAE71C756A09CA62D /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 8;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-EL3/Pods-EL3-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-EL3/Pods-EL3-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 1;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-EL3/Pods-EL3-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
