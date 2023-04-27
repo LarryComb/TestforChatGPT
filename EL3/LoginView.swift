@@ -28,6 +28,10 @@ struct LoginView: View {
                     .foregroundColor(.green)
                     .padding()
                     .toolbar {
+                        Button("Settings") {
+                            print("Button was tapped")
+                            
+                        }
                         Button("Logout") {
                             do {
                                 try Auth.auth().signOut()
@@ -42,18 +46,21 @@ struct LoginView: View {
                         }
                         
                         
-            
+                       
+                                
+                                
                         Button("Delete Account", role: .destructive) {
-                        
-                                do {
-                                    try Auth.auth().currentUser?.delete()
-                                    userIsLoggedIn = false
-                                    email = ""
-                                    password = ""
-                                } catch {
-                                    // handle error
-                                }
-                           }
+                            
+                            do {
+                                try Auth.auth().currentUser?.delete()
+                                userIsLoggedIn = false
+                                email = ""
+                                password = ""
+                            } catch {
+                                // handle error
+                            }
+                                
+                         }
                         }
                     } else {
                         content
