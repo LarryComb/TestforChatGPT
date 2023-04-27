@@ -29,9 +29,10 @@ struct LoginView: View {
                     .padding()
                     .toolbar {
                         Button("Settings") {
-                            print("Button was tapped")
-                            
-                        }
+                                print("Button was tapped")
+                            }
+                        
+                      
                         Button("Logout") {
                             do {
                                 try Auth.auth().signOut()
