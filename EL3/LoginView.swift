@@ -28,9 +28,7 @@ struct LoginView: View {
                     .foregroundColor(.green)
                     .padding()
                     .toolbar {
-                        Button("Settings") {
-                                print("Button was tapped")
-                            }
+                        NavigationLink("Settings", destination: Text("Hello"))
                         
                       
                         Button("Logout") {
