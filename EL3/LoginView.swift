@@ -28,7 +28,18 @@ struct LoginView: View {
                     .foregroundColor(.green)
                     .padding()
                     .toolbar {
-                        NavigationLink("Settings", destination: Text("Hello"))
+                        NavigationLink("Settings", destination: Button("Logout") {
+                            do {
+                                try Auth.auth().signOut()
+                                userIsLoggedIn = false
+                                email = ""
+                                password = ""
+                            }
+                            catch {
+                                // whatever for now
+                                
+                            }
+                        })
                         
                       
                         Button("Logout") {
