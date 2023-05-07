@@ -21,67 +21,68 @@ struct LoginView: View {
     
     var body: some View {
         NavigationView {
-            if userIsLoggedIn {
-                ContentView()
-                    .navigationBarHidden(false)
-                    .navigationTitle("ChatMate")
-                    .foregroundColor(.green)
-                    .padding()
-                    .toolbar {
-                        NavigationLink("Settings", destination: Button("Logout") {
-                            do {
-                                try Auth.auth().signOut()
-                                userIsLoggedIn = false
-                                email = ""
-                                password = ""
-                            }
-                            catch {
-                                // whatever for now
+            VStack {
+                if userIsLoggedIn {
+                    ContentView()
+                        .navigationBarHidden(false)
+                        .navigationTitle("ChatMate")
+                        .foregroundColor(.green)
+                        .padding()
+                        .toolbar {
+                            HStack {
+                                NavigationLink("Settings", destination: Button("Settings"){
+                                    do {
+                                        try Auth.auth().signOut()
+                                        userIsLoggedIn = false
+                                        email = ""
+                                        password = ""
+                                    }
+                                    catch {
+                                        // whatever for now
+                                        
+                                    }
+                                })
                                 
-                            }
-                        })
-                        
-                      
-                        Button("Logout") {
-                            do {
-                                try Auth.auth().signOut()
-                                userIsLoggedIn = false
-                                email = ""
-                                password = ""
-                            }
-                            catch {
-                                // whatever for now
+                                NavigationLink("Logout", destination: Button("Logout"){
+                                    do {
+                                        try Auth.auth().signOut()
+                                        userIsLoggedIn = false
+                                        email = ""
+                                        password = ""
+                                    }
+                                    catch {
+                                        // whatever for now
+                                        
+                                    }
+                                })
+                                
+                                
+                                NavigationLink("Delete Account", destination: Button("Delete Account"){
+                                    do {
+                                        try Auth.auth().currentUser?.delete()
+                                        userIsLoggedIn = false
+                                        email = ""
+                                        password = ""
+                                    } catch {
+                                        // handle error
+                                    }
+                                    
+                                })
                                 
                             }
                         }
-                        
-                        
-                       
-                                
-                                
-                        Button("Delete Account", role: .destructive) {
-                            
-                            do {
-                                try Auth.auth().currentUser?.delete()
-                                userIsLoggedIn = false
-                                email = ""
-                                password = ""
-                            } catch {
-                                // handle error
-                            }
-                                
-                         }
-                        }
-                    } else {
-                        content
-                            .navigationBarHidden(true)
-                            .navigationTitle("ChatMate")
-                            .foregroundColor(.blue)
-                    
+                                               
+                } else {
+                    content
+                        .navigationBarHidden(true)
+                        .navigationTitle("ChatMate")
+                        .foregroundColor(.blue)
                 }
             }
         }
-    
+    }
+
+
     var content: some View {
         ZStack {
             Color.blue
