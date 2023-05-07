@@ -32,15 +32,9 @@ struct LoginView: View {
                             HStack {
                                 NavigationLink("Settings", destination: Button("Settings"){
                                     do {
-                                        try Auth.auth().signOut()
-                                        userIsLoggedIn = false
-                                        email = ""
-                                        password = ""
+                                        print("hello")
                                     }
-                                    catch {
-                                        // whatever for now
-                                        
-                                    }
+                                    
                                 })
                                 
                                 NavigationLink("Logout", destination: Button("Logout"){
