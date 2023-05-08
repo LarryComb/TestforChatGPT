@@ -31,11 +31,14 @@ struct LoginView: View {
                         .toolbar {
                             HStack {
                                 NavigationLink("Settings", destination: Button("Settings"){
-                                    do {
-                                        print("hello")
-                                    }
+                                
+                                    print("Hello")
+                                        
+                                    
                                     
                                 })
+                                
+                                
                                 
                                 NavigationLink("Logout", destination: Button("Logout"){
                                     do {
