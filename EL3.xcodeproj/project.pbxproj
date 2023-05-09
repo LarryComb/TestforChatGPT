@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		16694E6CA036A06A9019670F /* libPods-EL3.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 19AFF7FCF66AB3E7082A353F /* libPods-EL3.a */; };
+		46A06F172A0AB4CB00795DA3 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46A06F162A0AB4CB00795DA3 /* SettingsView.swift */; };
 		46A7FF6E29B84A0E00F760BF /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46A7FF6D29B84A0E00F760BF /* LoginView.swift */; };
 		46A7FFAE29BD6A8000F760BF /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 46A7FFAD29BD6A8000F760BF /* GoogleService-Info.plist */; };
 		46A7FFB129BE285400F760BF /* InitializationCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46A7FFB029BE285400F760BF /* InitializationCode.swift */; };
@@ -21,6 +22,7 @@
 /* Begin PBXFileReference section */
 		19AFF7FCF66AB3E7082A353F /* libPods-EL3.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-EL3.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4602D67429D8AD050039EB44 /* EL3-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "EL3-Info.plist"; sourceTree = "<group>"; };
+		46A06F162A0AB4CB00795DA3 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		46A7FF6D29B84A0E00F760BF /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		46A7FFAD29BD6A8000F760BF /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		46A7FFB029BE285400F760BF /* InitializationCode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitializationCode.swift; sourceTree = "<group>"; };
@@ -81,6 +83,7 @@
 				46ED6888296D338600777A55 /* ContentView.swift */,
 				46A7FFB029BE285400F760BF /* InitializationCode.swift */,
 				46A7FF6D29B84A0E00F760BF /* LoginView.swift */,
+				46A06F162A0AB4CB00795DA3 /* SettingsView.swift */,
 				46A7FFAD29BD6A8000F760BF /* GoogleService-Info.plist */,
 				46ED688A296D338900777A55 /* Assets.xcassets */,
 				46ED688C296D338900777A55 /* Preview Content */,
@@ -208,6 +211,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				46A06F172A0AB4CB00795DA3 /* SettingsView.swift in Sources */,
 				46A7FFB129BE285400F760BF /* InitializationCode.swift in Sources */,
 				46A7FF6E29B84A0E00F760BF /* LoginView.swift in Sources */,
 				46ED6889296D338600777A55 /* ContentView.swift in Sources */,
