@@ -46,7 +46,7 @@ struct SettingsView: View {
 
                 }
             })
-             .padding()
+             .padding(.top, 20)
             NavigationLink("Delete Account", destination: Button("Delete Account"){
                 do {
                     try Auth.auth().currentUser?.delete()
@@ -58,6 +58,7 @@ struct SettingsView: View {
                 }
 
             })
+            .padding(.top, 20)
             Spacer()
         }
         .navigationTitle("Settings")
