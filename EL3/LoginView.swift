@@ -18,10 +18,14 @@ struct LoginView: View {
     @State private var userIsLoggedIn = false
     @State private var isTextGreen = false
     @State private var textColor = Color.blue
+    @State private var enableNotifications = false
+
     @AppStorage("isDarkMode") var isDarkMode: Bool = false
+    
 
     var loginCallback : (String) -> ()
-
+    @Environment(\.colorScheme) var colorScheme
+    
     var body: some View {
         NavigationView {
             VStack {
@@ -29,14 +33,14 @@ struct LoginView: View {
                     ContentView()
                         .navigationBarHidden(false)
                         .navigationTitle("ChatMate")
-                        .foregroundColor(.blue)
+                        .foregroundColor(isTextGreen ? .green : .blue)
                         .padding()
                         .toolbar {
                             HStack {
 
 
-                                NavigationLink("Settings", destination: SettingsView(isTextGreen: $isTextGreen, textColor: $textColor, isDarkMode: $isDarkMode))
-
+                                NavigationLink("Settings", destination: SettingsView(isTextGreen: $isTextGreen, textColor: $textColor, isDarkMode: $isDarkMode, enableNotifications: $enableNotifications))
+                                    .foregroundColor(isTextGreen ? .green : .blue)
 
                                // NavigationLink("Settings", destination: SettingsView(isTextGreen: $isTextGreen, textColor: $textColor))
 
@@ -50,32 +54,29 @@ struct LoginView: View {
                                         password = ""
                                     }
                                     catch {
-                                        // whatever for now
+                                        print(error.localizedDescription)
 
                                     }
                                 })
+                                .foregroundColor(isTextGreen ? .green : .blue)
 
-
-                                NavigationLink("Delete Account", destination: Button("Delete Account"){
-                                    do {
-                                        try Auth.auth().currentUser?.delete()
-                                        userIsLoggedIn = false
-                                        email = ""
-                                        password = ""
-                                    } catch {
-                                        // handle error
-                                    }
-
+                                NavigationLink("Delete Account", destination: Button("Delete Account") {
+                                    Auth.auth().currentUser?.delete()
+                                    userIsLoggedIn = false
+                                    email = ""
+                                    password = ""
                                 })
+                                .foregroundColor(isTextGreen ? .green : .blue)
 
                             }
                         }
 
                 } else {
                     content
+                        .foregroundColor(isTextGreen ? .green : .blue)
                         .navigationBarHidden(true)
-                        .navigationTitle("ChatMate")
-                        .foregroundColor(.blue)
+                        .navigationTitle("Errorifviewable")
+                        
                 }
             }
         }
@@ -98,7 +99,7 @@ struct LoginView: View {
                     .font(.largeTitle)
                     .bold()
                     .padding()
-                    .foregroundColor(.green)
+                    .foregroundColor(isTextGreen ? .green : .blue)
                 TextField("email", text: $email)
                     .padding()
                     .frame(width: 300, height: 50)
@@ -165,124 +166,6 @@ struct LoginView: View {
     
  
 
-//import Foundation
-//import SwiftUI
-//import Firebase
-//import FirebaseAuth
-//
-//struct LoginView: View {
-//    @State private var email = ""
-//    @State private var password = ""
-//    @State private var loginErrorMessage = ""
-//    @State private var hasLoginError = false
-//    @State private var userIsLoggedIn = false
-//
-//    var loginCallback : (String) -> ()
-//
-//    @EnvironmentObject var settings: SettingsViewModel
-//
-//    var body: some View {
-//        NavigationView {
-//            VStack {
-//                if userIsLoggedIn {
-//                    Text("ChatMate")
-//                        .navigationBarHidden(false)
-//                        .navigationTitle("ChatMate")
-//                        .foregroundColor(settings.isTextGreen ? .green : .blue)
-//                        .padding()
-//                        .toolbar {
-//                            HStack {
-//                                NavigationLink("Settings", destination: SettingsView())
-//                                NavigationLink("Logout", destination: Button("Logout"){
-//                                    do {
-//                                        try Auth.auth().signOut()
-//                                        userIsLoggedIn = false
-//                                        email = ""
-//                                        password = ""
-//                                    }
-//                                    catch {
-//                                        print(error.localizedDescription)
-//                                    }
-//                                })
-//
-//                                NavigationLink("Delete Account", destination: Button("Delete Account"){
-//                                    do {
-//                                        try Auth.auth().currentUser?.delete()
-//                                        userIsLoggedIn = false
-//                                        email = ""
-//                                        password = ""
-//                                    } catch {
-//                                        print(error.localizedDescription)
-//                                    }
-//                                })
-//                            }
-//                        }
-//                } else {
-//                    VStack {
-//                        Text("ChatMate")
-//                            .font(.largeTitle)
-//                            .bold()
-//                            .padding()
-//                            .foregroundColor(settings.isTextGreen ? .green : .blue)
-//
-//                        TextField("Email", text: $email)
-//                            .padding()
-//                            .frame(width: 300, height: 50)
-//                            .background(Color.gray.opacity(0.5))
-//                            .cornerRadius(10)
-//                            .autocapitalization(.none)
-//
-//                        SecureField("Password", text: $password)
-//                            .padding()
-//                            .frame(width: 300, height: 50)
-//                            .background(Color.gray.opacity(0.5))
-//                            .cornerRadius(10)
-//                            .autocapitalization(.none)
-//
-//                        Button(action: {
-//                            // User authentication process
-//                            Auth.auth().signIn(withEmail: email, password: password) { result, error in
-//                                hasLoginError = error != nil
-//                                loginErrorMessage = error?.localizedDescription ?? ""
-//                                if let _ = result?.user {
-//                                    userIsLoggedIn = true
-//                                }
-//                            }
-//                        }) {
-//                            Text("Login")
-//                                .foregroundColor(.white)
-//                                .frame(width: 300, height: 50)
-//                                .background(Color.blue)
-//                                .cornerRadius(10)
-//                        }
-//
-//                        Button(action: {
-//                            // User registration process
-//                            Auth.auth().createUser(withEmail: email, password: password) { result, error in
-//                                hasLoginError = error != nil
-//                                loginErrorMessage = error?.localizedDescription ?? ""
-//                                if let _ = result?.user {
-//                                    userIsLoggedIn = true
-//                                }
-//                            }
-//                        }) {
-//                            Text("Register")
-//                                .foregroundColor(.white)
-//                                .frame(width: 300, height: 50)
-//                                .background(Color.blue)
-//                                .cornerRadius(10)
-//                        }
-//
-//                        if hasLoginError {
-//                            Text(loginErrorMessage)
-//                                .foregroundColor(.red)
-//                        }
-//                    }
-//                }
-//            }
-//        }
-//    }
-//}
 
 
 

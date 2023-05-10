@@ -13,11 +13,14 @@ struct SettingsView: View {
     @Binding var isTextGreen: Bool
     @Binding var textColor: Color
     @Binding var isDarkMode: Bool
+    @Binding var enableNotifications: Bool
     @State private var email = ""
     @State private var password = ""
     @State private var loginErrorMessage = ""
     @State private var hasLoginError = false
     @State private var userIsLoggedIn = false
+    //@State private var enableNotifications = false
+
    // @Binding var show: Bool
 
     var body: some View {
@@ -34,6 +37,13 @@ struct SettingsView: View {
                     .foregroundColor(isTextGreen ? .green : .blue)
             }
             .padding()
+            
+            Toggle(isOn: $enableNotifications) {
+                Text("Enable Notifications")
+                    .foregroundColor(enableNotifications ? .green : .red)
+            }
+            .padding()
+
             NavigationLink("Logout", destination: Button("Logout"){
                 do {
                     try Auth.auth().signOut()
@@ -71,28 +81,6 @@ struct SettingsView: View {
 
 }
 
-//class SettingsViewModel: ObservableObject {
-//    @Published var isTextGreen = false
-//}
-//
-//
-//import SwiftUI
-//
-//struct SettingsView: View {
-//    @EnvironmentObject var settings: SettingsViewModel
-//    
-//    var body: some View {
-//        VStack {
-//            Toggle(isOn: $settings.isTextGreen) {
-//                Text("Toggle Text Color")
-//                    .foregroundColor(settings.isTextGreen ? .green : .blue)
-//            }
-//            .padding()
-//            Spacer()
-//        }
-//        .navigationTitle("Settings")
-//    }
-//}
 
 
 

@@ -44,15 +44,3 @@ class AppDelegate: NSObject, UIApplicationDelegate {
  }
 
 
-//@main
-//struct EL3App: App {
-//   
-//    @StateObject var settings = SettingsViewModel()
-//
-//    var body: some Scene {
-//        WindowGroup {
-//            LoginView()
-//                .environmentObject(settings)
-//        }
-//    }
-//}

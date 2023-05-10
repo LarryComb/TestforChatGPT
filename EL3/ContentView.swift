@@ -13,6 +13,8 @@ struct ContentView: View {
     @State private var messages = [Message]()
     @State private var isTextGreen = false
     @State private var textColor = Color.blue
+    @State private var enableNotifications = true
+
     @AppStorage("isDarkMode") var isDarkMode: Bool = false
     
     var body: some View {
@@ -28,11 +30,14 @@ struct ContentView: View {
             
             HStack {
                 TextField("Type here...", text: $inputMessage)
+                    .foregroundColor(isTextGreen ? .green : .blue)
                 Button("Send") {
                     self.sendMessage()
+                    
                 }
             }
             .padding()
+            
         }
         
     }
