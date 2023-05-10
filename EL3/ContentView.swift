@@ -11,6 +11,8 @@ import OpenAISwift
 struct ContentView: View {
     @State private var inputMessage = ""
     @State private var messages = [Message]()
+    @State private var isTextGreen = false
+    @State private var textColor = Color.blue
     @AppStorage("isDarkMode") var isDarkMode: Bool = false
     
     var body: some View {

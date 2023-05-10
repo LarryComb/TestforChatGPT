@@ -24,6 +24,8 @@ class AppDelegate: NSObject, UIApplicationDelegate {
 
  @main
  struct EL3App: App {
+     @State private var isTextGreen = false
+     @State private var textColor = Color.blue
      @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
      @AppStorage("isDarkMode") var isDarkMode: Bool = false
 
