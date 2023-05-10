@@ -11,6 +11,7 @@ import OpenAISwift
 struct ContentView: View {
     @State private var inputMessage = ""
     @State private var messages = [Message]()
+    @AppStorage("isDarkMode") var isDarkMode: Bool = false
     
     var body: some View {
         VStack(alignment: .leading) {

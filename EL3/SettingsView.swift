@@ -6,14 +6,24 @@
 //
 
 import SwiftUI
+import Combine
 
 
 struct SettingsView: View {
     @Binding var isTextGreen: Bool
     @Binding var textColor: Color
-    
+    @Binding var isDarkMode: Bool
+   // @Binding var show: Bool
+
     var body: some View {
         VStack {
+            
+            Toggle(isOn: $isDarkMode) {
+                Text("Dark Mode Setting")
+                    .preferredColorScheme(isDarkMode ? .dark : .light)
+                
+            }
+            .padding()
             Toggle(isOn: $isTextGreen) {
                 Text("Toggle Text Color")
                     .foregroundColor(isTextGreen ? .green : .blue)
@@ -25,18 +35,27 @@ struct SettingsView: View {
         .onChange(of: isTextGreen) { newValue in
             textColor = newValue ? .green : .blue // changed to blue
         }
+        
+        
     }
-    
+
 }
 
-
+//class SettingsViewModel: ObservableObject {
+//    @Published var isTextGreen = false
+//}
+//
+//
+//import SwiftUI
+//
 //struct SettingsView: View {
-//    @Binding var isTextGreen: Bool
+//    @EnvironmentObject var settings: SettingsViewModel
+//    
 //    var body: some View {
 //        VStack {
-//            Toggle(isOn: $isTextGreen) {
+//            Toggle(isOn: $settings.isTextGreen) {
 //                Text("Toggle Text Color")
-//                    .foregroundColor(isTextGreen ? .green : .blue)
+//                    .foregroundColor(settings.isTextGreen ? .green : .blue)
 //            }
 //            .padding()
 //            Spacer()
@@ -44,4 +63,9 @@ struct SettingsView: View {
 //        .navigationTitle("Settings")
 //    }
 //}
+
+
+
+
+
 

@@ -21,20 +21,36 @@ class AppDelegate: NSObject, UIApplicationDelegate {
    
 }
 
+
  @main
  struct EL3App: App {
      @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
-     
-     
+     @AppStorage("isDarkMode") var isDarkMode: Bool = false
+
      var body: some Scene {
          WindowGroup {
                  LoginView(loginCallback: captureToken(token:))
+                 .preferredColorScheme(isDarkMode ? .dark : .light)
          }
-         
+
      }
-     
+
      func captureToken(token: String)
      {
-         
+
      }
  }
+
+
+//@main
+//struct EL3App: App {
+//   
+//    @StateObject var settings = SettingsViewModel()
+//
+//    var body: some Scene {
+//        WindowGroup {
+//            LoginView()
+//                .environmentObject(settings)
+//        }
+//    }
+//}
