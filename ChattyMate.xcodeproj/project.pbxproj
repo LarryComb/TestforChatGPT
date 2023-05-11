@@ -146,7 +146,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 46ED687E296D338600777A55 /* Build configuration list for PBXProject "EL3" */;
+			buildConfigurationList = 46ED687E296D338600777A55 /* Build configuration list for PBXProject "ChattyMate" */;
 			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -351,7 +351,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "EL3-Info.plist";
-				INFOPLIST_KEY_CFBundleDisplayName = EL3;
+				INFOPLIST_KEY_CFBundleDisplayName = ChattyMate;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -383,7 +383,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "EL3-Info.plist";
-				INFOPLIST_KEY_CFBundleDisplayName = EL3;
+				INFOPLIST_KEY_CFBundleDisplayName = ChattyMate;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -405,7 +405,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		46ED687E296D338600777A55 /* Build configuration list for PBXProject "EL3" */ = {
+		46ED687E296D338600777A55 /* Build configuration list for PBXProject "ChattyMate" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				46ED688F296D338900777A55 /* Debug */,

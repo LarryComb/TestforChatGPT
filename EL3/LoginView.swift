@@ -19,7 +19,9 @@ struct LoginView: View {
     @State private var isTextGreen = false
     @State private var textColor = Color.blue
     @State private var enableNotifications = false
+    
 
+   
     @AppStorage("isDarkMode") var isDarkMode: Bool = false
     
 
@@ -32,7 +34,7 @@ struct LoginView: View {
                 if userIsLoggedIn {
                     ContentView()
                         .navigationBarHidden(false)
-                        .navigationTitle("ChatMate")
+                        .navigationTitle("ChattyMate")
                         .foregroundColor(isTextGreen ? .green : .blue)
                         .padding()
                         .toolbar {
@@ -95,7 +97,7 @@ struct LoginView: View {
                 .foregroundColor(.white)
 
             VStack {
-                Text("ChatMate")
+                Text("ChattyMate")
                     .font(.largeTitle)
                     .bold()
                     .padding()
