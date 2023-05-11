@@ -19,6 +19,7 @@ struct SettingsView: View {
     @State private var loginErrorMessage = ""
     @State private var hasLoginError = false
     var onLogout : () -> Void
+    var onDelete : () -> Void
     @Environment(\.presentationMode) var presentationMode
 
     var body: some View {
@@ -50,15 +51,13 @@ struct SettingsView: View {
     
             .padding(.top, 20)
 
-//                        Button("Delete Account") {
-//                            Auth.auth().currentUser?.delete()
-//                            userIsLoggedIn = false
-//                            email = ""
-//                            password = ""
-//                            presentationMode.wrappedValue.dismiss() // Dismiss the view and return to the previous view
-//                        }
-//                        .foregroundColor(isTextGreen ? .green : .blue)
-//                        .padding(.top, 20)
+                        Button("Delete Account") {
+                            Auth.auth().currentUser?.delete()
+                            onDelete()
+                            presentationMode.wrappedValue.dismiss() // Dismiss the view and return to the previous view
+                        }
+                        .foregroundColor(isTextGreen ? .green : .blue)
+                        .padding(.top, 20)
 
                         Spacer()
         }
