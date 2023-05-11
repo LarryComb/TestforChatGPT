@@ -41,6 +41,14 @@ struct LoginView: View {
         }
     }
     
+    func deleteAccountHandler() -> Void {
+        Auth.auth().currentUser?.delete()
+        userIsLoggedIn = false
+        email = ""
+        password = ""
+        
+    }
+    
     
     var body: some View {
         NavigationView {
@@ -55,26 +63,23 @@ struct LoginView: View {
                             HStack {
 
 
-                                NavigationLink("Settings", destination: SettingsView(isTextGreen: $isTextGreen, textColor: $textColor, isDarkMode: $isDarkMode, enableNotifications: $enableNotifications, onLogout: logoutHandler))
+                                NavigationLink("Settings", destination: SettingsView(isTextGreen: $isTextGreen, textColor: $textColor, isDarkMode: $isDarkMode, enableNotifications: $enableNotifications, onLogout: logoutHandler, onDelete: deleteAccountHandler))
                                     .foregroundColor(isTextGreen ? .green : .blue)
 
                                // NavigationLink("Settings", destination: SettingsView(isTextGreen: $isTextGreen, textColor: $textColor))
 
 
 
-                                NavigationLink("Logout", destination: Button("Logout"){
-                                        logoutHandler()
-                                    
-                                })
-                                .foregroundColor(isTextGreen ? .green : .blue)
-
-                                NavigationLink("Delete Account", destination: Button("Delete Account") {
-                                    Auth.auth().currentUser?.delete()
-                                    userIsLoggedIn = false
-                                    email = ""
-                                    password = ""
-                                })
-                                .foregroundColor(isTextGreen ? .green : .blue)
+//                                NavigationLink("Logout", destination: Button("Logout"){
+//                                        logoutHandler()
+//                                    
+//                                })
+//                                .foregroundColor(isTextGreen ? .green : .blue)
+//
+//                                NavigationLink("Delete Account", destination: Button("Delete Account") {
+//                                    deleteAccountHandler()
+//                                })
+//                                .foregroundColor(isTextGreen ? .green : .blue)
 
                             }
                         }
