@@ -28,6 +28,20 @@ struct LoginView: View {
     var loginCallback : (String) -> ()
     @Environment(\.colorScheme) var colorScheme
     
+    func logoutHandler() -> Void {
+        do {
+            try Auth.auth().signOut()
+            userIsLoggedIn = false;
+              email = ""
+              password = ""
+        }
+        catch {
+            print(error.localizedDescription)
+
+        }
+    }
+    
+    
     var body: some View {
         NavigationView {
             VStack {
@@ -41,7 +55,7 @@ struct LoginView: View {
                             HStack {
 
 
-                                NavigationLink("Settings", destination: SettingsView(isTextGreen: $isTextGreen, textColor: $textColor, isDarkMode: $isDarkMode, enableNotifications: $enableNotifications))
+                                NavigationLink("Settings", destination: SettingsView(isTextGreen: $isTextGreen, textColor: $textColor, isDarkMode: $isDarkMode, enableNotifications: $enableNotifications, onLogout: logoutHandler))
                                     .foregroundColor(isTextGreen ? .green : .blue)
 
                                // NavigationLink("Settings", destination: SettingsView(isTextGreen: $isTextGreen, textColor: $textColor))
@@ -49,16 +63,8 @@ struct LoginView: View {
 
 
                                 NavigationLink("Logout", destination: Button("Logout"){
-                                    do {
-                                        try Auth.auth().signOut()
-                                        userIsLoggedIn = false
-                                        email = ""
-                                        password = ""
-                                    }
-                                    catch {
-                                        print(error.localizedDescription)
-
-                                    }
+                                        logoutHandler()
+                                    
                                 })
                                 .foregroundColor(isTextGreen ? .green : .blue)
 

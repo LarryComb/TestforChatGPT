@@ -16,22 +16,18 @@ struct SettingsView: View {
     @Binding var textColor: Color
     @Binding var isDarkMode: Bool
     @Binding var enableNotifications: Bool
-    @State private var email = ""
-    @State private var password = ""
     @State private var loginErrorMessage = ""
     @State private var hasLoginError = false
-    @State private var userIsLoggedIn = false
+    var onLogout : () -> Void
     @Environment(\.presentationMode) var presentationMode
-
-    
 
     var body: some View {
         VStack {
-
+            
             Toggle(isOn: $isDarkMode) {
                 Text("Dark Mode Setting")
                     .preferredColorScheme(isDarkMode ? .dark : .light)
-
+                
             }
             .padding()
             Toggle(isOn: $isTextGreen) {
@@ -39,7 +35,7 @@ struct SettingsView: View {
                     .foregroundColor(isTextGreen ? .green : .blue)
             }
             .padding()
-
+            
             Toggle(isOn: $enableNotifications) {
                 Text("Enable Notifications")
                     .foregroundColor(enableNotifications ? .green : .red)
@@ -47,22 +43,13 @@ struct SettingsView: View {
             .padding()
             
             
-            
-            
+            Button("Logout") {
+                onLogout()
+            }
+        
+    
+            .padding(.top, 20)
 
-//                        Button("Logout") {
-//                            do {
-//                                try Auth.auth().signOut()
-//                                userIsLoggedIn = false
-//                                email = ""
-//                                password = ""
-//                                presentationMode.wrappedValue.dismiss() // Dismiss the view and return to the previous view
-//                            } catch {
-//                                print(error.localizedDescription)
-//                            }
-//                        })
-//                        .padding(.top, 20)
-//
 //                        Button("Delete Account") {
 //                            Auth.auth().currentUser?.delete()
 //                            userIsLoggedIn = false
@@ -70,8 +57,8 @@ struct SettingsView: View {
 //                            password = ""
 //                            presentationMode.wrappedValue.dismiss() // Dismiss the view and return to the previous view
 //                        }
-                        .foregroundColor(isTextGreen ? .green : .blue)
-                        .padding(.top, 20)
+//                        .foregroundColor(isTextGreen ? .green : .blue)
+//                        .padding(.top, 20)
 
                         Spacer()
         }
