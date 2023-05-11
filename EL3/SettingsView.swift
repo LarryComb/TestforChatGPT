@@ -37,17 +37,18 @@ struct SettingsView: View {
             }
             .padding()
             
-            Toggle(isOn: $enableNotifications) {
-                Text("Enable Notifications")
-                    .foregroundColor(enableNotifications ? .green : .red)
-            }
-            .padding()
+//            Toggle(isOn: $enableNotifications) {
+//                Text("Enable Notifications")
+//                    .foregroundColor(enableNotifications ? .green : .red)
+//            }
+//            .padding()
             
             
             Button("Logout") {
                 onLogout()
+                
             }
-        
+            .foregroundColor(isTextGreen ? .green : .blue)
     
             .padding(.top, 20)
 
