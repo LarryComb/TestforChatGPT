@@ -2,10 +2,9 @@
 //  LoginView.swift
 //  EL3
 //
-//  Created by LARRY COMBS on 3/7/23.
+//  Created by LARRY COMBS on 5/15/23.
 //
 
-import Foundation
 import SwiftUI
 import Firebase
 import FirebaseAuth
@@ -72,7 +71,7 @@ struct LoginView: View {
 
 //                                NavigationLink("Logout", destination: Button("Logout"){
 //                                        logoutHandler()
-//                                    
+//
 //                                })
 //                                .foregroundColor(isTextGreen ? .green : .blue)
 //
@@ -176,11 +175,3 @@ struct LoginView: View {
 
 
 }
-    
- 
-
-
-
-
-
-
