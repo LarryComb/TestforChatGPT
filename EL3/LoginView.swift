@@ -82,13 +82,14 @@ struct LoginView: View {
 
                             }
                         }
+                    
 
                 } else {
                     content
                         .foregroundColor(isTextGreen ? .green : .blue)
                         .navigationBarHidden(true)
                         .navigationTitle("Errorifviewable")
-                        
+                    
                 }
             }
         }
