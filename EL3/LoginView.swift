@@ -55,7 +55,7 @@ struct LoginView: View {
                 if userIsLoggedIn {
                     ContentView()
                         .navigationBarHidden(false)
-                        .navigationTitle("ChattyMate")
+                        .navigationTitle("ChatMate")
                         .foregroundColor(isTextGreen ? .green : .blue)
                         .padding()
                         .toolbar {
@@ -108,7 +108,7 @@ struct LoginView: View {
                 .foregroundColor(.white)
 
             VStack {
-                Text("ChattyMate")
+                Text("ChatMate")
                     .font(.largeTitle)
                     .bold()
                     .padding()
