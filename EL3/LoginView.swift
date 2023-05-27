@@ -8,6 +8,8 @@
 import SwiftUI
 import Firebase
 import FirebaseAuth
+import CryptoKit
+//import Crypto
 import AuthenticationServices
 
 struct LoginView: View {
@@ -21,10 +23,12 @@ struct LoginView: View {
     @State private var enableNotifications = false
     
 
-   
+    
+    
+    
     @AppStorage("isDarkMode") var isDarkMode: Bool = false
     
-
+    
     var loginCallback : (String) -> ()
     @Environment(\.colorScheme) var colorScheme
     
@@ -32,12 +36,12 @@ struct LoginView: View {
         do {
             try Auth.auth().signOut()
             userIsLoggedIn = false;
-              email = ""
-              password = ""
+            email = ""
+            password = ""
         }
         catch {
             print(error.localizedDescription)
-
+            
         }
     }
     
@@ -49,13 +53,16 @@ struct LoginView: View {
         
     }
     
-
-        
-         
+    
+    
+    
+    //@StateObject private var loginData = AppleLoginData()
     
     var body: some View {
         NavigationStack {
             VStack {
+                
+                
                 if userIsLoggedIn {
                     ContentView()
                         .navigationBarHidden(false)
@@ -64,30 +71,30 @@ struct LoginView: View {
                         .padding()
                         .toolbar {
                             HStack {
-
-
+                                
+                                
                                 NavigationLink("Settings", destination: SettingsView(isTextGreen: $isTextGreen, textColor: $textColor, isDarkMode: $isDarkMode, enableNotifications: $enableNotifications, onLogout: logoutHandler, onDelete: deleteAccountHandler))
                                     .foregroundColor(isTextGreen ? .green : .blue)
-
-                               // NavigationLink("Settings", destination: SettingsView(isTextGreen: $isTextGreen, textColor: $textColor))
-
-
-
-//                                NavigationLink("Logout", destination: Button("Logout"){
-//                                        logoutHandler()
-//
-//                                })
-//                                .foregroundColor(isTextGreen ? .green : .blue)
-//
-//                                NavigationLink("Delete Account", destination: Button("Delete Account") {
-//                                    deleteAccountHandler()
-//                                })
-//                                .foregroundColor(isTextGreen ? .green : .blue)
-
+                                
+                                // NavigationLink("Settings", destination: SettingsView(isTextGreen: $isTextGreen, textColor: $textColor))
+                                
+                                
+                                
+                                //                                NavigationLink("Logout", destination: Button("Logout"){
+                                //                                        logoutHandler()
+                                //
+                                //                                })
+                                //                                .foregroundColor(isTextGreen ? .green : .blue)
+                                //
+                                //                                NavigationLink("Delete Account", destination: Button("Delete Account") {
+                                //                                    deleteAccountHandler()
+                                //                                })
+                                //                                .foregroundColor(isTextGreen ? .green : .blue)
+                                
                             }
                         }
                     
-
+                    
                 } else {
                     content
                         .foregroundColor(isTextGreen ? .green : .blue)
@@ -98,8 +105,8 @@ struct LoginView: View {
             }
         }
     }
-
-
+    
+    
     var content: some View {
         ZStack {
             Color.blue
@@ -110,7 +117,7 @@ struct LoginView: View {
             Circle()
                 .scale(1.35)
                 .foregroundColor(.white)
-
+            
             VStack {
                 Text("ChatMate")
                     .font(.largeTitle)
@@ -130,8 +137,8 @@ struct LoginView: View {
                     .background(Color.black.opacity(0.25))
                     .cornerRadius(10)
                     .autocapitalization(.none)
-
-
+                
+                
                 Button(action: {
                     // authenticate User
                     Auth.auth().signIn(withEmail: email, password: password) { result, error in
@@ -150,7 +157,7 @@ struct LoginView: View {
                         .background(Color.blue)
                         .cornerRadius(10)
                 }
-
+                
                 Button(action: {
                     // register User
                     Auth.auth().createUser(withEmail: email, password: password) { result, error in
@@ -169,14 +176,39 @@ struct LoginView: View {
                         .background(Color.blue)
                         .cornerRadius(10)
                 }
-            }
-        }
+                
+                SignInWithAppleButton(.signIn) { request in
+                                    // requesting parameters from apple login
+                                    //let nonce = randomNonceString()
+                                    request.requestedScopes = [.email, .fullName]
+                                    //request.nonce = sha256(nonce)
+                                } onCompletion: { result in
+                                    // getting error or success…
+                                    switch result {
+                                    case .success(let authResults):
+                                        print("Success")
+                                        // Do Login with Firebase
+                                        guard let credential = authResults.credential as? ASAuthorizationAppleIDCredential else {
+                                            print("Error with Firebase")
+                                            return
+                                        }
+                                        // Authenticate with Firebase using the credential
+                                       // loginData.authenticate(credential: credential)
+                                    case .failure(let error):
+                                        print(error.localizedDescription)
+                                    }
+                                }
+                                .foregroundColor(.green)
+                                .frame(width: 300, height: 50)
+                                .background(Color.blue)
+                                .cornerRadius(10)
+                            }
+                        }
+        
         .navigationBarHidden(true)
         .alert(isPresented: $hasLoginError) {
             Alert(title: Text("Error"), message: Text(loginErrorMessage), dismissButton: .default(Text("OK")))
         }
     }
-
-
-
+    
 }
