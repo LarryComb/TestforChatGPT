@@ -194,6 +194,7 @@ struct LoginView: View {
                                         }
                                         // Authenticate with Firebase using the credential
                                        // loginData.authenticate(credential: credential)
+                                            
                                     case .failure(let error):
                                         print(error.localizedDescription)
                                     }
@@ -202,6 +203,7 @@ struct LoginView: View {
                                 .frame(width: 300, height: 50)
                                 .background(Color.blue)
                                 .cornerRadius(10)
+                                //.signInWithAppleButtonStyle(colorScheme == .dark ? .black : .white)
                             }
                         }
         
