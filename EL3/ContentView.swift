@@ -16,6 +16,7 @@ struct ContentView: View {
     @State private var enableNotifications = true
 
     @AppStorage("isDarkMode") var isDarkMode: Bool = false
+    @AppStorage("Login_Status") var log_Status = false
     
     var body: some View {
         VStack(alignment: .leading) {
