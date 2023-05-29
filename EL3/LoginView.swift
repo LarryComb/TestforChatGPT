@@ -55,7 +55,7 @@ struct LoginView: View {
     
     
     
-    
+    @StateObject var loginData = LoginViewModel()
     //@StateObject private var loginData = AppleLoginData()
     
     var body: some View {
@@ -76,21 +76,7 @@ struct LoginView: View {
                                 NavigationLink("Settings", destination: SettingsView(isTextGreen: $isTextGreen, textColor: $textColor, isDarkMode: $isDarkMode, enableNotifications: $enableNotifications, onLogout: logoutHandler, onDelete: deleteAccountHandler))
                                     .foregroundColor(isTextGreen ? .green : .blue)
                                 
-                                // NavigationLink("Settings", destination: SettingsView(isTextGreen: $isTextGreen, textColor: $textColor))
-                                
-                                
-                                
-                                //                                NavigationLink("Logout", destination: Button("Logout"){
-                                //                                        logoutHandler()
-                                //
-                                //                                })
-                                //                                .foregroundColor(isTextGreen ? .green : .blue)
-                                //
-                                //                                NavigationLink("Delete Account", destination: Button("Delete Account") {
-                                //                                    deleteAccountHandler()
-                                //                                })
-                                //                                .foregroundColor(isTextGreen ? .green : .blue)
-                                
+                                 
                             }
                         }
                     
@@ -179,11 +165,13 @@ struct LoginView: View {
                 
                 SignInWithAppleButton(.signIn) { request in
                                     // requesting parameters from apple login
-                                    //let nonce = randomNonceString()
+                                   // viewModel.handleSigninWithAppleRequest(request)
+                                    let nonce = randomNonceString()
                                     request.requestedScopes = [.email, .fullName]
-                                    //request.nonce = sha256(nonce)
+                                    request.nonce = sha256(nonce)
                                 } onCompletion: { result in
                                     // getting error or success…
+                                    //viewModel.handleSigninWithAppleCompletion(request)
                                     switch result {
                                     case .success(let authResults):
                                         print("Success")
@@ -194,7 +182,7 @@ struct LoginView: View {
                                         }
                                         // Authenticate with Firebase using the credential
                                        // loginData.authenticate(credential: credential)
-                                            
+
                                     case .failure(let error):
                                         print(error.localizedDescription)
                                     }
