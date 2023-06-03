@@ -75,11 +75,8 @@ struct LoginView: View {
                                 
                                 NavigationLink("Settings", destination: SettingsView(isTextGreen: $isTextGreen, textColor: $textColor, isDarkMode: $isDarkMode, enableNotifications: $enableNotifications, onLogout: logoutHandler, onDelete: deleteAccountHandler))
                                     .foregroundColor(isTextGreen ? .green : .blue)
-                                
-                                 
                             }
                         }
-                    
                     
                 } else {
                     content
