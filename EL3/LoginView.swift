@@ -172,6 +172,7 @@ struct LoginView: View {
                                     switch result {
                                     case .success(let authResults):
                                         print("Success")
+                                        userIsLoggedIn = true
                                         // Do Login with Firebase
                                         guard let credential = authResults.credential as? ASAuthorizationAppleIDCredential else {
                                             print("Error with Firebase")

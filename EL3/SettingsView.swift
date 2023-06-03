@@ -46,16 +46,18 @@ struct SettingsView: View {
             
             Button("Logout") {
                 onLogout()
+                // Dismiss the view and return to the previous view
+                presentationMode.wrappedValue.dismiss()
                 
             }
             .foregroundColor(isTextGreen ? .green : .blue)
-    
             .padding(.top, 20)
 
                         Button("Delete Account") {
                             Auth.auth().currentUser?.delete()
                             onDelete()
-                            presentationMode.wrappedValue.dismiss() // Dismiss the view and return to the previous view
+                            // Dismiss the view and return to the previous view
+                            presentationMode.wrappedValue.dismiss()
                         }
                         .foregroundColor(isTextGreen ? .green : .blue)
                         .padding(.top, 20)
