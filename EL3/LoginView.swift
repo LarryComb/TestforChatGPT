@@ -21,6 +21,7 @@ struct LoginView: View {
     @State private var isTextGreen = false
     @State private var textColor = Color.blue
     @State private var enableNotifications = false
+    @State private var timer: Timer?
     
 
     
@@ -44,6 +45,18 @@ struct LoginView: View {
             
         }
     }
+    
+    func startLogoutTimer() {
+            timer = Timer.scheduledTimer(withTimeInterval: 3600, repeats: false) { timer in
+                logoutHandler()
+            }
+        }
+
+        func stopLogoutTimer() {
+            timer?.invalidate()
+            timer = nil
+        }
+
     
     func deleteAccountHandler() -> Void {
         Auth.auth().currentUser?.delete()
@@ -161,23 +174,28 @@ struct LoginView: View {
                 }
                 
                 Button(action: {
-                    // register User
-                    Auth.auth().createUser(withEmail: email, password: password) { result, error in
+                    // 1 hour trail User does not have to enter personal information
+                    Auth.auth().signIn(withEmail: "test@test.com", password: "123456") { result, error in
                         // handle the result and error here
                         hasLoginError = error != nil
                         loginErrorMessage = error?.localizedDescription ?? ""
                         if let _ = result?.user {
                             // User has successfully registered and logged in
                             userIsLoggedIn = true
+                            startLogoutTimer()
                         }
+                            
                     }
+                    
                 }) {
-                    Text("30 min trial")
+                    Text("1hr trial")
                         .foregroundColor(.green)
                         .frame(width: 300, height: 50)
                         .background(Color.blue)
                         .cornerRadius(10)
                 }
+                
+                
                 
                 SignInWithAppleButton(.signIn) { request in
                                     // requesting parameters from apple login
