@@ -160,6 +160,25 @@ struct LoginView: View {
                         .cornerRadius(10)
                 }
                 
+                Button(action: {
+                    // register User
+                    Auth.auth().createUser(withEmail: email, password: password) { result, error in
+                        // handle the result and error here
+                        hasLoginError = error != nil
+                        loginErrorMessage = error?.localizedDescription ?? ""
+                        if let _ = result?.user {
+                            // User has successfully registered and logged in
+                            userIsLoggedIn = true
+                        }
+                    }
+                }) {
+                    Text("30 min trial")
+                        .foregroundColor(.green)
+                        .frame(width: 300, height: 50)
+                        .background(Color.blue)
+                        .cornerRadius(10)
+                }
+                
                 SignInWithAppleButton(.signIn) { request in
                                     // requesting parameters from apple login
                                    // viewModel.handleSigninWithAppleRequest(request)
